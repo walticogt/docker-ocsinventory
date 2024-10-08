@@ -1,0 +1,56 @@
+-- Levantar el proyecto (sin proxy invertido)
+	docker-compose up -d
+
+-- Desde el navegador, continue (admin / admin)
+http://localhost:8090
+
+
+-- Comandos adicionales importantes
+docker exec -it ocsinventory-db /bin/bash
+mysql -h ocsinventory-db -u ocsuser -pocspass ocsweb
+show tables;
+
+docker-compose down
+docker-compose up --build
+
+--- Comandos que podrían servirte (ocsinventory-db):
+yum install mlocate
+updatedb
+
+
+-- Comandos adicionales importantes 2
+docker exec -it ocsinventory-server /bin/bash
+apt install nano && nano /etc/php/8.1/apache2/php.ini
+	post_max_size = 50M
+	upload_max_filesize = 50M
+
+
+-- Revisar log
+	docker logs ocsinventory-server
+
+-- desde WSL para entrar al contenedor
+	docker exec -it ocsinventory-server /bin/bash
+
+-- Listar contenedores (en ejecución)
+	docker ps
+
+-- Listar todos los contenedores (detenidos y ejecución)
+	docker ps -a
+
+-- Listar imágenes
+	docker images
+
+-- Listar volúmenes
+	docker volume ls
+
+-- Ver el LOG de un contenedor
+	docker logs <nombre_o_id_del_contenedor>
+
+-- Detener 
+	docker stop <nombre_o_id_del_contenedor>
+
+-- Eliminar un contenedor
+	docker rm <nombre_o_id_del_contenedor>
+
+-- Eliminar una imagen
+	docker rmi <nombre_o_id_de_la_imagen>
