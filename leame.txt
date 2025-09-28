@@ -1,6 +1,11 @@
 -- Levantar el proyecto (sin proxy invertido)
 	docker-compose up -d
 
+-- Si levantas el docker nas, ejecutar manualmente el ocsbase.sql, entrar a docker de bd:
+docker exec -it ocsinventory-db /bin/bash
+mysql -h ocsinventory-db -u ocsuser -pocspass ocsweb
+show tables;
+
 -- Desde el navegador, continue (admin / admin)
 http://localhost:8090/ocsreports
 
@@ -10,10 +15,16 @@ pwd: admin
 
 Change pwd admin....
 
--- Comandos adicionales importantes
-docker exec -it ocsinventory-db /bin/bash
-mysql -h ocsinventory-db -u ocsuser -pocspass ocsweb
-show tables;
+========
+para entrar al docker de la web desde el terminal
+docker exec -it ocsinventory-server /bin/bash
+
+-- verificar lo q se hace en docker-compose.YML...
+-- Agregar al final del archivo: 
+nano /etc/apache2/apace2.conf
+	ServerName 172.29.24.3
+/usr/sbin/apache2ctl restart
+
 
 docker-compose down
 docker-compose up --build
