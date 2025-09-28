@@ -2,8 +2,13 @@
 	docker-compose up -d
 
 -- Desde el navegador, continue (admin / admin)
-http://localhost:8090
+http://localhost:8090/ocsreports
 
+Darle en "Perform te update" (Realizar actualizacion)
+user: admin
+pwd: admin
+
+Change pwd admin....
 
 -- Comandos adicionales importantes
 docker exec -it ocsinventory-db /bin/bash
