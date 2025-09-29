@@ -6,6 +6,11 @@ docker exec -it ocsinventory-db /bin/bash
 mysql -h ocsinventory-db -u ocsuser -pocspass ocsweb
 show tables;
 
+-- Conectarme como root
+mysql -h ocsinventory-db -u root -prootpass
+GRANT ALL PRIVILEGES ON ocsweb.* TO 'ocsuser'@'%' IDENTIFIED BY 'ocspass';
+FLUSH PRIVILEGES;
+
 -- Desde el navegador, continue (admin / admin)
 http://localhost:8090/ocsreports
 
